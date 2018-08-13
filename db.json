@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "first_name": "Steven",
+      "headline": "Met on the L Train",
+      "email": "steven@creepy.net",
+      "where": "Brooklyn",
+      "encounter": "Hey, You were a short blonde girl who was from Greece, but is actually from France.  It's been a while. Not sure if you see this, if you do get in touch."
+    },
+    {
+      "id": 2,
+      "first_name": "Zoe",
+      "headline": "Met on the L Train",
+      "email": "zoe@thisweird.com",
+      "where": "Brooklyn",
+      "encounter": "Hey, You brown and all that.  Sup.  Skin smooth."
+    },
+    {
+      "id": 3,
+      "first_name": "Paul",
+      "headline": "Coffee Meets Bagel",
+      "email": "paul@wework.com",
+      "where": "Dumbo",
+      "encounter": "I've traveled to New Zealand.  It was cool."
+    },
+    {
+      "id": 4,
+      "first_name": "Lindsey",
+      "headline": "Met on the C+B App",
+      "email": "lindsay@gmail.com",
+      "where": "queens",
+      "encounter": "I'm needy."
+    }
+  ]
+}
