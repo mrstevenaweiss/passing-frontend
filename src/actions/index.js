@@ -1,28 +1,10 @@
-// import { ADD_REMINDER, FETCH_POSTS, SELECT_POST } from '../constants'
-
-// export const addReminder = (title, text) => {
-//   const action = {
-//     type: ADD_REMINDER,
-//     title,
-//     text
-//   }
-//   console.log('action in addReminder', action)
-//   return action;
-// }
-//
-// export const selectPost = (post) => {
-//   return {
-//     type: 'SELECT_POST',
-//     payload: {
-//       post
-//     }
-//   }
-// }
 
 import {
   FETCH_POSTS_BEGIN,
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_FAILURE
+  FETCH_POSTS_FAILURE,
+  SELECT_POST,
+  SEARCH_POSTS
 } from '../constants'
 
 export function fetchPosts() {
@@ -32,7 +14,6 @@ export function fetchPosts() {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log("OI", json)
         dispatch(fetchPostsSuccess(json));
         return json.posts;
       })
@@ -62,21 +43,21 @@ export const fetchPostsFailure = error => ({
   payload: { error }
 });
 
+export const selectPost = (post) => {
+  return {
+    type: SELECT_POST,
+    payload: {
+      post
+    }
+  };
+}
 
-
-//
-// export const getPosts = () => {
-//   return (dispatch) => {
-//     fetch('http://localhost:3000/posts')
-//     .then(resp => resp.json())
-//     .then(result => {
-//       // console.log(result)
-//       dispatch({
-//         type: 'FETCH_POSTS',
-//         payload: {
-//           posts: result
-//         }
-//       })
-//     })
-//   }
-// }
+export const search = (searchTerm) => {
+  console.log("in action", searchTerm)
+  return {
+    type: SEARCH_POSTS,
+    payload:{
+      searchTerm
+    }
+  };
+}

@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
+import { search } from '../actions'
+
+import { connect } from 'react-redux'
 
 class Search extends Component {
+
+  onInputChange = (event) => {
+  // this.setState({ init: event.target.value })
+    // console.log(event.target.value)
+    this.props.filterPosts(event.target.value)
+}
+
   render() {
+    // const filterText = this.props.filterText;
     return (
     <div className="Search">
       <form>
        <input
          type="text"
          placeholder="Search..."
-         value="" />
-       <button type="button" className="btn btn-success">FIND'EM</button>
+         className="form-control"
+         onChange={this.onInputChange}
+         // value="{this.state.init}"
+       />
      </form>
+     <br/>
     </div>
     );
   }
 }
 
-export default Search;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterPosts: (searchTerm) => { dispatch(search(searchTerm)) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Search);

@@ -1,13 +1,18 @@
 import {
   FETCH_POSTS_BEGIN,
   FETCH_POSTS_SUCCESS,
-  FETCH_POSTS_FAILURE
+  FETCH_POSTS_FAILURE,
+  SELECT_POST,
+  SEARCH_POSTS
 } from '../constants'
 
 const initialState = {
   posts: [],
   loading: false,
-  error: null
+  error: null,
+  selectedPost: null,
+  value: '',
+  filteredPosts: []
 };
 
 export default function postReducer(state = initialState, action) {
@@ -24,11 +29,12 @@ export default function postReducer(state = initialState, action) {
     case FETCH_POSTS_SUCCESS:
       // All done: set loading "false".
       // Also, replace the items with the ones from the server
-      console.log(action.payload.posts);
+
       return {
         ...state,
         loading: false,
-        posts: action.payload.posts
+        posts: action.payload.posts,
+        filteredPosts: action.payload.posts
       };
 
     case FETCH_POSTS_FAILURE:
@@ -44,7 +50,23 @@ export default function postReducer(state = initialState, action) {
         posts: []
       };
 
-    default:
+      case SELECT_POST:
+        return {
+          ...state,
+          selectedPost: action.payload.post
+        }
+
+      case SEARCH_POSTS:
+          // const posts = state.contents.filter((val) => val.includes(value));
+          console.log("in reducer", action.payload.searchTerm);
+          return {
+            ...state,
+            filteredPosts: state.posts.filter(post => post.headline.includes(action.payload.searchTerm) || post.encounter.includes(action.payload.searchTerm))
+          };
+
+          // return{ ...state, posts: state.posts.filter(post => post.includes(state.value))}
+
+      default:
       // ALWAYS have a default case in a reducer
       return state;
   }

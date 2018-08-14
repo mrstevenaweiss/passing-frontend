@@ -1,12 +1,11 @@
 import React from 'react';
-import { selectPost } from '../actions'
+// import { selectPost } from '../actions'
 
 import { connect } from 'react-redux'
 //
-const Post = props => {
-
+const PostDetail = props => {
   return (
-      <li key={props.post.id} className="list-group-item my-6" onClick={() => props.selectPost(props.post)}>
+      <li key={props.post.id} className="list-group-item my-6" onClick={() => console.log('i love things')}>
         <div
           className="post-item title">
           <div><strong>{props.post.headline}</strong></div>
@@ -21,6 +20,7 @@ const Post = props => {
           {/* &#x21b3; */}
         </div>
       </li>
+
     )
 };
 
@@ -31,7 +31,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(null, { selectPost })(Post)
+export default connect(null, null)(PostDetail)
 
 //     <div className='post' onClick={() => props.selectPost(props.post) }>
 //       {/* <img alt={props.post.name} src={props.post.image_url} /> */}

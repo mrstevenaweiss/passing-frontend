@@ -1,9 +1,8 @@
-// export const CREATE_POST = 'CREATE_POST'
-export const SELECT_POST = 'SELECT_POST'
-export const FETCH_POSTS = 'FETCH_POSTS'
-export const ADD_REMINDER = 'ADD_REMINDER'
 
 
 export const FETCH_POSTS_BEGIN   = 'FETCH_POSTS_BEGIN';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
+export const SELECT_POST = 'SELECT_POST';
+export const CREATE_POST = 'CREATE_POST'
+export const SEARCH_POSTS = 'SEARCH_POSTS';
