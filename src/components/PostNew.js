@@ -1,88 +1,62 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux'
-// import { addReminder, replyReminder } from '../actions'
-// // import { bindActionCreators } from 'redux'
-//
-// class PostNew extends Component {
-//
-//   state = {
-//     // username: "",
-//     title: "",
-//     // email: "",
-//     // where: "",
-//     text: ""
-//   }
-//
-//   addReminder() {
-//     this.props.addReminder(this.state.title, this.state.text)
-//   }
-//
-//   replyReminder(id) {
-//     console.log('this.props', this.props)
-//     console.log('id', id)
-//   }
-//
-//   renderReminders() {
-//     const { reminders } = this.props
-//     return (
-//       <ul className="list-group my-6">
-//         {
-//           reminders.map(reminder => {
-//             return (
-//               <li key={reminder.id} className="list-group-item">
-//                 <div
-//                   className="post-item title">
-//                   <div><strong>{reminder.title}</strong></div>
-//                 <div><span className="post-item text">{reminder.text}</span></div>
-//               </div>
-//                 <div
-//                   className="post-item reply-button"
-//                   onClick={() => this.replyReminder(reminder.id)}>
-//                   &#x21b3;
-//                 </div>
-//               </li>
-//             )
-//           })
-//         }
-//       </ul>
-//     )
-//   }
-//
-//   render() {
-//   // const {handleSubmit, submitting, newPost} = this.props;
-//   return (
-//     <div className='container'>
-//       <br/>
-//       <form>
-//         <div className="col-12 col-lg-6 offset-lg-3">
-//           {/* <input className="form-control my-3" placeholder="Username" onChange={(e)=>this.handleChange(e)} />
-//           <input className="form-control my-3" placeholder="Email" onChange={(e)=>this.handleChange(e)}/>
-//           <input className="form-control my-3" placeholder="Where" onChange={(e)=>this.handleChange(e)}/> */}
-//           <input className="form-control my-3" placeholder="Title" onChange={ event => this.setState({ title: event.target.value }) }/>
-//           <textarea className="form-control my-6" placeholder="The Story" onChange={ event => this.setState({ text: event.target.value }) }>
-//             </textarea>
-//           <span className="input-group-btn">
-//           <button
-//             type="button"
-//             className="btn btn-primary float-right"
-//             onClick={()=> this.addReminder()}
-//             >
-//               Submit
-//             </button>
-//             </span>
-//             <br/>
-//             { this.renderReminders() }
-//         </div>
-//       </form>
-//     </div>
-//     )
-//   }
-// }
-//
-//   function mapStateToProps(state) {
-//     return {
-//       reminders: state
-//     }
-//   }
-//
-// export default connect(mapStateToProps, { addReminder })(PostNew)
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { addPost } from '../actions'
+
+class PostNew extends Component {
+
+  state = {
+    first_name: "",
+    headline: "",
+    email: "",
+    where: "",
+    encounter: ""
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.addingPost(this.state)
+  }
+
+  render() {
+  // const {handleSubmit, submitting, newPost} = this.props;
+  return (
+    <div className='container'>
+      <br/>
+      <form>
+        <div className="col-12 col-lg-6 offset-lg-3"><strong>NEW</strong>
+          <input className="form-control my-3" name="headline" placeholder="Headline" onChange={ (event) => this.handleChange(event) } />
+          <input className="form-control my-3" name="first_name" placeholder="First Name" onChange={ (event) => this.handleChange(event)} />
+          <input className="form-control my-3" name="email" placeholder="Email" onChange={ (event)=>this.handleChange(event) }/>
+          <input className="form-control my-3" name="where" placeholder="Where" onChange={ (event)=>this.handleChange(event) }/>
+          <textarea className="form-control my-6" name="encounter" placeholder="Encounter" onChange={ (event) => this.handleChange(event) }>
+            </textarea>
+          <span className="input-group-btn">
+          <button
+            type="button"
+            className="btn btn-primary float-right"
+            onClick={this.handleSubmit}>
+            >
+              Submit
+            </button>
+            </span>
+            <br/>
+        </div>
+      </form>
+    </div>
+    )
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addingPost: (newPost) => { dispatch(addPost(newPost)) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PostNew)

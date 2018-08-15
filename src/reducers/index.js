@@ -3,7 +3,8 @@ import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE,
   SELECT_POST,
-  SEARCH_POSTS
+  SEARCH_POSTS,
+  CREATE_POST_SUCCESS
 } from '../constants'
 
 const initialState = {
@@ -58,13 +59,14 @@ export default function postReducer(state = initialState, action) {
 
       case SEARCH_POSTS:
           // const posts = state.contents.filter((val) => val.includes(value));
-          console.log("in reducer", action.payload.searchTerm);
+          // console.log("in reducer", action.payload.searchTerm);
           return {
             ...state,
             filteredPosts: state.posts.filter(post => post.headline.includes(action.payload.searchTerm) || post.encounter.includes(action.payload.searchTerm))
           };
 
-          // return{ ...state, posts: state.posts.filter(post => post.includes(state.value))}
+        case CREATE_POST_SUCCESS:
+          console.log("in reducer", action.payload);
 
       default:
       // ALWAYS have a default case in a reducer

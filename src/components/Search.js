@@ -6,13 +6,10 @@ import { connect } from 'react-redux'
 class Search extends Component {
 
   onInputChange = (event) => {
-  // this.setState({ init: event.target.value })
-    // console.log(event.target.value)
     this.props.filterPosts(event.target.value)
 }
 
   render() {
-    // const filterText = this.props.filterText;
     return (
     <div className="Search">
       <form>

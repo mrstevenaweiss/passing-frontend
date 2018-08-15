@@ -21,8 +21,8 @@ class App extends Component {
         </header>
 
         <main>
-          {/* <PostNew />*/}
-          {this.props.selectedPost ? <PostDetail post={this.props.selectedPost} />  : <PostsListContainer /> }
+          <PostNew />
+          {/* {this.props.selectedPost ? <PostDetail post={this.props.selectedPost} />  : <PostsListContainer /> } */}
         </main>
 
       </div>

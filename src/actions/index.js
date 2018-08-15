@@ -4,7 +4,9 @@ import {
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE,
   SELECT_POST,
-  SEARCH_POSTS
+  SEARCH_POSTS,
+  CREATE_POST_BEGIN,
+  CREATE_POST_SUCCESS
 } from '../constants'
 
 export function fetchPosts() {
@@ -43,6 +45,40 @@ export const fetchPostsFailure = error => ({
   payload: { error }
 });
 
+export const addPost = (newPost) => {
+  return dispatch => {
+    const url = `http://localhost:3000/posts`
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newPost)
+    }
+    // dispatch(createPostBegin());
+    return fetch(url,options)
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(post => {
+        // dispatch(createPostSuccess(post))
+        return post;
+      })
+    }
+  }
+
+// export const createPostBegin = () => ({
+//     type: CREATE_POST_BEGIN
+// });
+//
+// export function createPostSuccess(newPost) {
+//   return {
+//     type: CREATE_POST_SUCCESS,
+//     payload: newPost
+//   };
+// }
+
+
 export const selectPost = (post) => {
   return {
     type: SELECT_POST,
@@ -53,7 +89,6 @@ export const selectPost = (post) => {
 }
 
 export const search = (searchTerm) => {
-  console.log("in action", searchTerm)
   return {
     type: SEARCH_POSTS,
     payload:{
