@@ -3,35 +3,57 @@ import React from 'react';
 
 import { connect } from 'react-redux'
 //
-const PostDetail = props => {
-  return (
-      <li key={props.post.id} className="list-group-item my-6" onClick={() => console.log('i love things')}>
-        <div
-          className="post-item title">
-          <div><strong>{props.post.headline}</strong></div>
-            <div>
-              <span className="post-item text">{props.post.encounter}</span>
-            </div>
-        </div>
+class PostDetail extends React.Component {
 
-        <div
-          className="post-item reply-button"
-          onClick={() => console.log}>
-          {/* &#x21b3; */}
-        </div>
-      </li>
+  state = {
+    currentPost: {
+      id: null,
+      headline: null,
+      enctouner: null
+    }
+  }
 
+  componentDidMount(){
+    console.log("postDetail props:", this.props);
+    const { postId } = this.props.match.params;
+    const post = this.props.posts.find(post => post.id === parseInt(postId))
+    this.setState({
+      currentPost: post
+    });
+  }
+
+  render () {
+    if (this.state.currentPost) {
+      return (
+        <li key={this.state.currentPost.id} className="list-group-item my-6" onClick={() => console.log('i love things')}>
+          <div
+            className="post-item title">
+            <div><strong>{this.state.currentPost.headline}</strong></div>
+          <div>
+            <span className="post-item text">{this.state.currentPost.encounter}</span>
+        </div>
+      </div>
+
+      <div
+        className="post-item reply-button"
+        onClick={() => console.log}>
+        {/* &#x21b3; */}
+      </div>
+    </li>
     )
-};
+  } else {
+    return null
+  }
+  };
+}
 
-const mapStateToProps = (state, ownProps) => {
-  const selected = state.selectPost.id === ownProps.post.id
+const mapStateToProps = (state) => {
   return {
-    selected
+    posts: state.posts
   }
 }
 
-export default connect(null, null)(PostDetail)
+export default connect(mapStateToProps, null)(PostDetail)
 
 //     <div className='post' onClick={() => props.selectPost(props.post) }>
 //       {/* <img alt={props.post.name} src={props.post.image_url} /> */}

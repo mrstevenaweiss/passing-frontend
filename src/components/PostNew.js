@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addPost } from '../actions'
+import { Link } from 'react-router';
+
 
 class PostNew extends Component {
 
@@ -40,7 +42,7 @@ class PostNew extends Component {
           <button
             type="button"
             className="btn btn-primary float-right"
-            onClick={this.handleSubmit}>
+            onClick={this.handleSubmit}
             >
               Submit
             </button>

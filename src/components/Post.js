@@ -1,10 +1,10 @@
 import React from 'react';
 import { selectPost } from '../actions'
-
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 //
 const Post = props => {
-
+  console.log(this.props);
   return (
       <li key={props.post.id} className="list-group-item my-6" onClick={() => props.selectPost(props.post)}>
         <div
@@ -12,6 +12,7 @@ const Post = props => {
           <div><strong>{props.post.headline}</strong></div>
             <div>
               <span className="post-item text">{props.post.encounter}</span>
+            <Link to={`/posts/${props.post.id}`}>Click here asshole</Link>
             </div>
         </div>
 

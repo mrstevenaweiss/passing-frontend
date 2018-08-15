@@ -1,35 +1,20 @@
-import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import React, { Component, Fragment } from 'react';
 import '../App.css'
-import Header from '../components/Header'
-import PostsListContainer from '../containers/PostsListContainer'
-import PostNew from '../components/PostNew'
-import PostDetail from '../components/PostDetail'
+import Container from '../containers/Container'
 import { connect } from 'react-redux'
-
-// import SearchContainer from '../containers/SearchContainer'
-// import PostContainer from '../containers/PostContainer'
-// import FooterContainer from '../containers/FooterContainer'
 
 class App extends Component {
 
-  render() {
-    console.log('le props', this.props)
+  render(){
     return (
-      <div className="App">
-        <header className="app-header">
-          <Header />
-        </header>
-
-        <main>
-          <PostNew />
-          {/* {this.props.selectedPost ? <PostDetail post={this.props.selectedPost} />  : <PostsListContainer /> } */}
-        </main>
-
-      </div>
-    );
+      <Fragment>
+        <Container />
+      </Fragment>
+    )
   }
 }
 
-const mapStateToProps = state => ({ selectedPost: state.selectedPost })
+// const mapStateToProps = state => ({ selectedPost: state.selectedPost })
 
-export default connect(mapStateToProps, null)(App);
+export default withRouter(connect(null, null)(App));

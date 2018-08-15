@@ -8,10 +8,7 @@ class PostNewContainer extends Component {
   render() {
     return (
       <div className="post-new-container">
-        <header className="app-header">
-          <Header />
-        </header>
-          IS THIS WORKING
+          <PostNew />
       </div>
     );
   }
