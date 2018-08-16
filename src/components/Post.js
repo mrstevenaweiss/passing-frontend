@@ -7,19 +7,20 @@ const Post = props => {
   console.log(this.props);
   return (
       <li key={props.post.id} className="list-group-item my-6" onClick={() => props.selectPost(props.post)}>
+        <Link to={`/posts/${props.post.id}`}>&#x21b3;</Link>
         <div
           className="post-item title">
           <div><strong>{props.post.headline}</strong></div>
             <div>
               <span className="post-item text">{props.post.encounter}</span>
-            <Link to={`/posts/${props.post.id}`}>Click here asshole</Link>
+
             </div>
         </div>
 
         <div
           className="post-item reply-button"
           onClick={() => console.log}>
-          {/* &#x21b3; */}
+
         </div>
       </li>
     )
