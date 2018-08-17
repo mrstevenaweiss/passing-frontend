@@ -13,9 +13,10 @@ class Search extends Component {
     return (
     <div className="Search">
       <form>
+
        <input
          type="text"
-         placeholder="Search..."
+         placeholder="Find Your Chance"
          className="form-control"
          onChange={this.onInputChange}
          // value="{this.state.init}"

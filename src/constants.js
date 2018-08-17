@@ -5,3 +5,5 @@ export const SELECT_POST = 'SELECT_POST';
 export const SEARCH_POSTS = 'SEARCH_POSTS';
 export const CREATE_POST_BEGIN = 'CREATE_POST_BEGIN'
 export const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS'
+export const SIGNUP = 'LOGIN'
+export const LOGIN = 'SIGNUP'

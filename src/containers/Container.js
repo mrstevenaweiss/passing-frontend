@@ -5,6 +5,7 @@ import PostsListContainer from '../containers/PostsListContainer';
 import PostNewContainer from '../containers/PostNewContainer';
 import PostDetailContainer from '../containers/PostDetailContainer';
 import LoginContainer from '../containers/LoginContainer';
+import SignupContainer from '../containers/SignupContainer';
 
 const Container = props => {
   return (
@@ -15,6 +16,7 @@ const Container = props => {
         <Route exact path="/post" component={PostNewContainer} />
         <Route exact path="/posts/:postId" component={PostDetailContainer} />
         <Route exact path="/login" component={LoginContainer} />
+        <Route exact path="/signup" component={SignupContainer} />
         {/* <Route path='*' component={<Redirect to="/" />} /> */}
     </div>
     </Router>

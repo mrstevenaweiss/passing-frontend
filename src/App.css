@@ -8,16 +8,40 @@
   background-color: cyan;
 }
 
+a.logo-nav {
+  padding-left: 50px;
+}
+
+a.post-nav:hover,
+a.login-nav:hover,
+a.signup-nav:hover,
+a.logo-nav:hover
+{
+  text-decoration: none;
+  color: yellow;
+}
+
+a.logo-nav:visited {
+  text-decoration: none;
+}
+
+
+.uni-logo {
+  color: yellow;
+}
+
 a.navbar-brand {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
-  font-size: 36px;
   font-family: Helvetica;
+
 }
 
 .brand-logo.nav-wrapper.container {
   height: 60px;
+  font-size: 40px;
+  text-decoration: none;
 }
 
 .app-footer {

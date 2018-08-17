@@ -12,7 +12,7 @@ import {
 export function fetchPosts() {
   return dispatch => {
     dispatch(fetchPostsBegin());
-    return fetch('http://localhost:3000/posts')
+    return fetch('http://localhost:3002/api/v1/posts')
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -24,7 +24,7 @@ export function fetchPosts() {
 }
 
 // Handle HTTP errors since fetch won't.
-function handleErrors(response) {
+const handleErrors = (response) => {
   if (!response.ok) {
     throw Error(response.statusText);
   }
@@ -45,39 +45,47 @@ export const fetchPostsFailure = error => ({
   payload: { error }
 });
 
+const postPost = (newPost) => {
+  console.log('first hit', newPost)
+  return fetch(`http://localhost:3002/api/v1/posts`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(newPost)
+  }).then(res => res.json())
+    .then(res => console.log("after response", res)
+  )
+}
+
 export const addPost = (newPost) => {
-  return dispatch => {
-    const url = `http://localhost:3000/posts`
-    const options = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newPost)
-    }
-    // dispatch(createPostBegin());
-    return fetch(url,options)
-      .then(handleErrors)
-      .then(res => res.json())
-      .then(post => {
-        // dispatch(createPostSuccess(post))
-        return post;
-      })
-    }
+  return (dispatch) => {
+    postPost(newPost)
+    .then(result => console.log("TRYING TO LOGIN", result));
+    // dispatch(userLogin({email: user.user.email, password: user.user.password}))
   }
+}
 
-// export const createPostBegin = () => ({
-//     type: CREATE_POST_BEGIN
-// });
-//
-// export function createPostSuccess(newPost) {
-//   return {
-//     type: CREATE_POST_SUCCESS,
-//     payload: newPost
-//   };
-// }
+const signUp = (user) => {
+  console.log('signup adapter', user);
+  return fetch(`http://localhost:3002/api/v1/users`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(user)
+  }).then(res => res.json())
+  .then(data => console.log("hitting the signup", data))
+}
 
+export const signup = (user) => {
+  console.log('signup', user);
+  return (dispatch) => {
+    signUp(user)
+    .then(result => console.log("TRYING TO SIGNUP", result));
+    // dispatch(userLogin({email: user.user.email, password: user.user.password}))
+  }
+}
 
 export const selectPost = (post) => {
   return {

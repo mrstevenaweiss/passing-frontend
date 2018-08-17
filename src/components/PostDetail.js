@@ -9,7 +9,7 @@ class PostDetail extends React.Component {
     currentPost: {
       id: null,
       headline: null,
-      enctouner: null
+      encounter: null
     }
   }
 

@@ -4,7 +4,9 @@ import {
   FETCH_POSTS_FAILURE,
   SELECT_POST,
   SEARCH_POSTS,
-  CREATE_POST_SUCCESS
+  CREATE_POST_SUCCESS,
+  SIGNUP,
+  LOGIN
 } from '../constants'
 
 const initialState = {
@@ -13,11 +15,20 @@ const initialState = {
   error: null,
   selectedPost: null,
   value: '',
-  filteredPosts: []
+  filteredPosts: [],
+  currentUser: {}
 };
 
 export default function postReducer(state = initialState, action) {
   switch(action.type) {
+    case SIGNUP:
+      // Mark the state as "loading" so we can show a spinner or something
+      // Also, reset any errors. We're starting fresh.
+      return {
+        ...state,
+        currentUser: action.payload.user
+      };
+
     case FETCH_POSTS_BEGIN:
       // Mark the state as "loading" so we can show a spinner or something
       // Also, reset any errors. We're starting fresh.
@@ -73,52 +84,3 @@ export default function postReducer(state = initialState, action) {
       return state;
   }
 }
-
-
-// import { ADD_REMINDER, FETCH_POSTS, SELECT_POST } from '../constants'
-//
-// // const initialState = {
-// //   posts: [],
-// //   selectedPost: {}
-// // }
-// //
-// // const reducer = (state = initialState, action) => {
-// //   switch (action.type) {
-// //
-// //     case 'FETCH_POSTS':
-// //     return {
-// //       ...state,
-// //       posts: action.payload.posts
-// //     }
-// //
-// //     case 'SELECT_POST':
-// //     return {
-// //       ...state,
-// //       selectedPost: action.payload.post
-// //     }
-// //
-// const reminder = (action) => {
-//   let { title, text } = action
-//
-//   return {
-//     id: Math.random(),
-//     title,
-//     text
-//   }
-// }
-//
-// const reminders = (state = [], action) => {
-//   let reminders = null;
-//
-//   switch(action.type) {
-//     case ADD_REMINDER:
-//       reminders = [...state, reminder(action)]
-//       console.log('reminders as state', reminders);
-//       return reminders;
-//
-//     default:
-//       return state;
-//   }
-// }
-//
-// export default reminders;
