@@ -30,7 +30,7 @@ class Login extends Component {
       <form>
         <div className="col-12 col-lg-6 offset-lg-3"><strong>LOGIN</strong>
           <input className="form-control my-3" name="email" placeholder="Email" onChange={ (event)=>this.handleChange(event) }/>
-          <input className="form-control my-3" type="password" name="password" placeholder="Where" onChange={ (event)=>this.handleChange(event) }/>
+          <input className="form-control my-3" type="password" name="password" placeholder="Password" onChange={ (event)=>this.handleChange(event) }/>
 
           <span className="input-group-btn">
           <button
