@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { Link } from 'react-router-dom';
-// import { login } from '../actions'
+import { login } from '../actions'
 
 class Login extends Component {
 
@@ -17,28 +16,28 @@ class Login extends Component {
   }
 
   handleSubmit = (e) => {
-    // e.preventDefault()
-    // this.props.addingPost(this.state)
-    console.log('this is login state', this.state)
+    e.preventDefault()
+    console.log('this is state in Login Component', this.state)
+    const {email, password} = this.state
+    this.props.login({email, password})
   }
 
   render() {
 
   return (
-    <div className='container'>
+    <div className='login-container-form'>
       <br/>
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="col-12 col-lg-6 offset-lg-3"><strong>LOGIN</strong>
-          <input className="form-control my-3" name="email" placeholder="Email" onChange={ (event)=>this.handleChange(event) }/>
+          <input className="form-control my-3" type="text" name="email" placeholder="Email" onChange={ (event)=>this.handleChange(event) }/>
           <input className="form-control my-3" type="password" name="password" placeholder="Password" onChange={ (event)=>this.handleChange(event) }/>
 
           <span className="input-group-btn">
           <button
-            type="button"
+            type="submit"
             className="btn btn-primary float-right"
-            onClick={this.handleSubmit}
             >
-              Login
+              LOGIN
             </button>
             </span>
             <br/>
@@ -49,10 +48,11 @@ class Login extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addingPost: (newPost) => { dispatch(addPost(newPost)) }
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  console.log('dispatch', this)
+  return {
+    login: (user) => { dispatch( login(user) ) }
+  }
+}
 
-export default connect(null, null)(Login)
+export default connect(null, mapDispatchToProps )(Login)

@@ -25,9 +25,9 @@ class PostDetail extends React.Component {
   render () {
     if (this.state.currentPost) {
       return (
-        <li key={this.state.currentPost.id} className="list-group-item my-6" onClick={() => console.log('i love things')}>
+        <li key={this.state.currentPost.id} className="list-group-item my-6" >
           <div
-            className="post-item title">
+            className="post-detail">
             <div><strong>{this.state.currentPost.headline}</strong></div>
             <div>{this.state.currentPost.first_name}</div>
             <div>{this.state.currentPost.email}</div>

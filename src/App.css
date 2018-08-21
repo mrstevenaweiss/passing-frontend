@@ -1,7 +1,14 @@
 /* NAVBAR  */
-
 .navbar {
   background-color: cyan;
+
+}
+nav.light-blue {
+  height: 75px;
+}
+
+a.login-nav {
+  height: 75px;
 }
 
 a.logo-nav {
@@ -11,7 +18,8 @@ a.logo-nav {
 a.post-nav:hover,
 a.login-nav:hover,
 a.signup-nav:hover,
-a.logo-nav:hover
+a.logo-nav:hover,
+a.logout-nav:hover
 {
   text-decoration: none;
   color: yellow;
@@ -27,7 +35,7 @@ a.logo-nav:visited {
 
 .brand-logo.nav-wrapper.container {
   height: 60px;
-  font-size: 40px;
+  font-size: 50px;
   text-decoration: none;
 }
 
@@ -38,21 +46,27 @@ a.navbar-brand {
   font-family: Helvetica;
 }
 
-.container {
-  border: 1px;
+/* POSTS LIST  */
+.list-group-item.my-6 {
+  display: flex;
 }
 
-/* POSTS LIST  */
 .posts-list-container {
   width: 950px;
   height: 110px;
-  display: block;
   align-items: center;
   margin: 0 auto;
 }
 
+.image-retweet {
+  height: 25px;
+}
+.post-item.retweet {
+    position: absolute;
+    top: 55%;
+    right: 2%;
+}
 
-/* DETAILED POST */
 .post-image {
   display: inline-block;
   box-sizing: border-box;
@@ -67,14 +81,14 @@ a.navbar-brand {
 }
 
 .post-item.name {
-  font-size: 12px;
+  font-size: 10px;
   color: orange;
 }
 
 .post-item.text {
-  padding: 0 0 0 20px;
-  display: inline;
-  font-size: 12px;
+  padding: 0 0 30px 0;
+  display: flex;
+  font-size: 14px;
 }
 
 .post-item.retweet {
@@ -86,7 +100,27 @@ a.navbar-brand {
   padding: 0 10px 0 0;
 }
 
-div.form-group {
-  width: 90%;
-  margin-left: 10px;
+/* LOGIN FORM  */
+.login-container-form {
+  margin: 150px auto;
+}
+
+/* DETAILED POST */
+a.detail-return {
+  color: black;
+}
+.post-detail-container {
+    width: 500px;
+    margin: 50px auto;
+    border: 3px solid #73AD21;
+}
+
+/* LOGOUT */
+.logout-container {
+    width: 500px;
+    margin: 50px auto;
+    border: 1px solid gray;
+}
+.logout {
+  text-align: center;
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Login from '../components/Login'
 import { connect } from 'react-redux'
 
-class PostsListContainer extends Component {
+class LoginContainer extends Component {
   render() {
     return (
-      <div>
-        <Login />
+      <div className="login-container">
+        <Login handleUser={this.props.handleUser} />
       </div>
     );
   }
@@ -14,4 +14,4 @@ class PostsListContainer extends Component {
 
 const mapStateToProps = state => ({ posts: state.posts })
 
-export default connect(mapStateToProps, null)(PostsListContainer)
+export default connect(mapStateToProps, null)(LoginContainer)

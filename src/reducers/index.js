@@ -6,7 +6,8 @@ import {
   SEARCH_POSTS,
   CREATE_POST_SUCCESS,
   SIGNUP,
-  LOGIN
+  LOGIN,
+  LOGOUT
 } from '../constants'
 
 const initialState = {
@@ -16,7 +17,8 @@ const initialState = {
   selectedPost: null,
   value: '',
   filteredPosts: [],
-  currentUser: {}
+  currentUser: {},
+  loggedIn: false
 };
 
 export default function postReducer(state = initialState, action) {
@@ -26,8 +28,24 @@ export default function postReducer(state = initialState, action) {
       // Also, reset any errors. We're starting fresh.
       return {
         ...state,
-        currentUser: action.payload.user
+        currentUser: action.payload.user, loggedIn: true
       };
+
+    case LOGIN:
+      // Mark the state as "loading" so we can show a spinner or something
+      // Also, reset any errors. We're starting fresh.
+      return {
+        ...state,
+        currentUser: action.payload.user, loggedIn: true
+      };
+
+    case LOGOUT:
+      // Mark the state as "loading" so we can show a spinner or something
+      // Also, reset any errors. We're starting fresh.
+      return {
+        initialState
+      };
+
 
     case FETCH_POSTS_BEGIN:
       // Mark the state as "loading" so we can show a spinner or something
