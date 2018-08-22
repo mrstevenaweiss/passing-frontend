@@ -17,8 +17,7 @@ const initialState = {
   selectedPost: null,
   value: '',
   filteredPosts: [],
-  currentUser: {},
-  loggedIn: false
+  currentUser: null
 };
 
 export default function postReducer(state = initialState, action) {
@@ -28,22 +27,23 @@ export default function postReducer(state = initialState, action) {
       // Also, reset any errors. We're starting fresh.
       return {
         ...state,
-        currentUser: action.payload.user, loggedIn: true
+        currentUser: action.payload.user
       };
 
     case LOGIN:
       // Mark the state as "loading" so we can show a spinner or something
       // Also, reset any errors. We're starting fresh.
+      localStorage.setItem("currentUser", action.payload.user.email)
       return {
         ...state,
-        currentUser: action.payload.user, loggedIn: true
+        currentUser: action.payload.user
       };
 
     case LOGOUT:
       // Mark the state as "loading" so we can show a spinner or something
       // Also, reset any errors. We're starting fresh.
       return {
-        initialState
+        ...initialState
       };
 
 
@@ -89,9 +89,10 @@ export default function postReducer(state = initialState, action) {
       case SEARCH_POSTS:
           // const posts = state.contents.filter((val) => val.includes(value));
           // console.log("in reducer", action.payload.searchTerm);
+          const term = action.payload.searchTerm.toLowerCase()
           return {
             ...state,
-            filteredPosts: state.posts.filter(post => post.headline.includes(action.payload.searchTerm) || post.encounter.includes(action.payload.searchTerm))
+            filteredPosts: state.posts.filter(post => post.headline.toLowerCase().includes(term) || post.encounter.toLowerCase().includes(term))
           };
 
         case CREATE_POST_SUCCESS:

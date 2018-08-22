@@ -103,7 +103,7 @@ export const signup = (user) => {
   console.log('signup', user);
   return (dispatch) => {
     userSignup(user)
-    .then(result => console.log("TRYING TO SIGNUP", result));
+    .then(result => alert('SIGNUP SUCCESSFUL.  GO LOGIN'));
     login(console.log('login in action'))
   }
 }
@@ -124,18 +124,19 @@ export const login = (user) => {
   return (dispatch) => {
     userLogin(user)
     .then(user => {
-        // debugger;
         user.error !== "User no existo" ?
         dispatch({
           type: LOGIN,
           payload: {user}
         })
         :
-        console.log('YOU FOOL');
+        alert('User dont exist')
       })
     };
   }
 
-  export const logout = (something) => {
-    console.log('logout', something);
+  export const logout = () => {
+      return {
+        type: LOGOUT
+      }
   }

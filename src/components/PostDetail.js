@@ -28,7 +28,7 @@ class PostDetail extends React.Component {
         <li key={this.state.currentPost.id} className="list-group-item my-6" >
           <div
             className="post-detail">
-            <div><strong>{this.state.currentPost.headline}</strong></div>
+            <div className="post-detail-title"><strong>{this.state.currentPost.headline}</strong></div>
             <div>{this.state.currentPost.first_name}</div>
             <div>{this.state.currentPost.email}</div>
             <div>{this.state.currentPost.where}</div>

@@ -11,32 +11,27 @@ import Logout from '../components/Logout';
 
 class Container extends React.Component {
 
-  state = {
-    current_user: null
-  }
-
-  componentDidMount() {
-    
-  }
-
   render() {
   console.log('current user in container', this.props.currentUser);
   return (
     <Router>
       <div className="app">
-        <Header current_user={this.state.current_user}/>
+        <Header />
         <Route exact path="/" component={PostsListContainer} />
         <Route exact path="/logout" component={Logout} />
-        <Route exact path="/post" component={PostNewContainer} />
         <Route exact path="/posts/:postId" component={PostDetailContainer} />
+        <Route exact path="/post" render={ () => {
+          return (this.props.currentUser ? <PostNewContainer />
+        : <Redirect to="/login" />)
+        }} />
 
         <Route path="/login" render={() => {
-            return (this.props.loggedIn ? <Redirect to="/" />
-          : <LoginContainer  handleUser={this.handleUser} />)
+            return (this.props.currentUser ? <Redirect to="/" />
+          : <LoginContainer  />)
         }} />
 
         <Route path="/signup" render={() => {
-          return (this.state.current_user ? <Redirect to="/" />
+          return (this.props.currentUser ? <Redirect to="/login" />
         : <SignupContainer />)
         }} />
     </div>
@@ -48,8 +43,7 @@ class Container extends React.Component {
 const mapStateToProps = state => {
 console.log('in mapStateT',state);
   return {
-    currentUser: state.currentUser,
-    loggedIn: state.loggedIn
+    currentUser: state.currentUser
   }
 }
 

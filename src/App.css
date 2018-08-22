@@ -108,11 +108,16 @@ a.navbar-brand {
 /* DETAILED POST */
 a.detail-return {
   color: black;
+  font-size: 20px;
 }
 .post-detail-container {
-    width: 500px;
-    margin: 50px auto;
-    border: 3px solid #73AD21;
+  width: 500px;
+  margin: 50px auto;
+  border: 3px solid yellow;
+}
+
+.post-detail-title {
+  font-size: 36px;
 }
 
 /* LOGOUT */

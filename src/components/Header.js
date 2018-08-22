@@ -2,15 +2,15 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import '../App.css'
+import { logout } from '../actions'
+
 
 class Header extends React.Component {
 
-
-  // const logoutHandler = () => {
-  //   store.dispatch(RESET_ACTION)
-  //   // Also the custom logic like for the rest of the logout handler
-  // }
-
+  logout = () => {
+    localStorage.removeItem('currentUser');
+    this.props.userLogout();
+  }
 
   render() {
     console.log(this.props)
@@ -21,12 +21,12 @@ class Header extends React.Component {
           <NavLink className="logo-nav" to="/"><span className="uni-logo">&#9023;</span><strong>PASSING</strong></NavLink>
 
           <ul className="right hide-on-med-and-down">
-            {this.props.loggedIn ?
+            {this.props.currentUser ?
             (
               <Fragment>
                 <li><NavLink className="post-nav" to="/post">POST</NavLink></li>
                 <li><NavLink  className="login-nav" to="/">{this.props.currentUser.first_name} </NavLink></li>
-                <li><NavLink className="logout-nav" to="/logout" onClick={()=>console.log('i am logout')}>LOGOUT</NavLink></li>
+                <li><NavLink className="logout-nav" to="/logout" onClick={this.logout}>LOGOUT</NavLink></li>
               </Fragment>
             )
           :
@@ -48,11 +48,15 @@ class Header extends React.Component {
 const mapStateToProps = state => {
 console.log('in mapStateT',state);
   return {
-    currentUser: state.currentUser,
-    loggedIn: state.loggedIn
+    currentUser: state.currentUser
   }
 }
-// 
+// login: (user) => { dispatch( login(user) ) }
 // const logOut =
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLogout: () => { dispatch( logout() ) }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
