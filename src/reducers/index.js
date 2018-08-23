@@ -14,7 +14,9 @@ const initialState = {
   posts: [],
   loading: false,
   error: null,
-  selectedPost: null,
+  selectedPost: {
+    comments: [{id: 3, name: "Pablo", text: "i love pizza and women lots of pizza"}]
+  },
   value: '',
   filteredPosts: [],
   currentUser: null

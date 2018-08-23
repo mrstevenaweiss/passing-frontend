@@ -26,7 +26,7 @@ class PostNew extends Component {
   }
 
   render() {
-  // const {handleSubmit, submitting, newPost} = this.props;
+
   return (
     <div className='container'>
       <br/>

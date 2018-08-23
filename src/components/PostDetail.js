@@ -1,5 +1,5 @@
 import React from 'react';
-// import { selectPost } from '../actions'
+import CommentBox from '../components/CommentBox'
 
 import { connect } from 'react-redux'
 //
@@ -25,23 +25,28 @@ class PostDetail extends React.Component {
   render () {
     if (this.state.currentPost) {
       return (
-        <li key={this.state.currentPost.id} className="list-group-item my-6" >
+        <div>
+            <li key={this.state.currentPost.id} className="list-group-item my-6" >
+              <div
+                className="post-detail">
+                <div className="post-detail-title"><strong>{this.state.currentPost.headline}</strong></div>
+                <div>{this.state.currentPost.first_name}</div>
+                <div>{this.state.currentPost.email}</div>
+                <div>{this.state.currentPost.where}</div>
+              <div className="post-item text">{this.state.currentPost.encounter}
+            </div>
+          </div>
+
           <div
-            className="post-detail">
-            <div className="post-detail-title"><strong>{this.state.currentPost.headline}</strong></div>
-            <div>{this.state.currentPost.first_name}</div>
-            <div>{this.state.currentPost.email}</div>
-            <div>{this.state.currentPost.where}</div>
-          <div className="post-item text">{this.state.currentPost.encounter}
+            className="post-item reply-button"
+            onClick={() => console.log}>
+            {/* &#x21b3; */}
+          </div>
+        </li>
+        <div>
+          <CommentBox />
         </div>
       </div>
-
-      <div
-        className="post-item reply-button"
-        onClick={() => console.log}>
-        {/* &#x21b3; */}
-      </div>
-    </li>
     )
   } else {
     return null
