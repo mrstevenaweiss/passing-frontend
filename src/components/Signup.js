@@ -10,7 +10,7 @@ class Signup extends Component {
     first_name: "",
     last_name: "",
     email: "",
-    password: "",
+    password: ""
   }
 
   handleChange = (e) => {
@@ -18,12 +18,23 @@ class Signup extends Component {
       [e.target.name]: e.target.value
     })
   }
+  //
+  // clearForm = (e) => {
+  //   this.setState({
+  //     first_name: "",
+  //     last_name: "",
+  //     email: "",
+  //     password: ""
+  //   })
+  // }
+
 
   handleSubmit = () => {
     // e.preventDefault()
     console.log('this is state', this.state)
     const {first_name, last_name, email, password} = this.state
     this.props.signup({first_name, last_name, email, password})
+    // this.clearForm(e)
   }
 
   render() {

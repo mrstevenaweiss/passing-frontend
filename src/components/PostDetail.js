@@ -36,11 +36,6 @@ class PostDetail extends React.Component {
                 <div className="post-item text"><strong>{this.state.currentPost.encounter}</strong>
                 </div>
               </div>
-            <div
-              className="post-item reply-button"
-              onClick={() => console.log}>
-              {/* &#x21b3; */}
-            </div>
           </li>
           <div className="commentbox">
             <CommentBox />
