@@ -9,7 +9,8 @@ import {
   CREATE_POST_SUCCESS,
   SIGNUP,
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  POST_COMMENT
 } from '../constants'
 
 export function fetchPosts() {
@@ -138,5 +139,12 @@ export const login = (user) => {
   export const logout = () => {
       return {
         type: LOGOUT
+      }
+  }
+
+  export const postComment = (comment) => {
+      return {
+        type: POST_COMMENT,
+        payload: comment
       }
   }

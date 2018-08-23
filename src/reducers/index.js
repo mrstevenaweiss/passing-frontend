@@ -7,7 +7,8 @@ import {
   CREATE_POST_SUCCESS,
   SIGNUP,
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  POST_COMMENT
 } from '../constants'
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
   loading: false,
   error: null,
   selectedPost: {
-    comments: [{id: 3, name: "Pablo", text: "i love pizza and women lots of pizza"}]
+    comments: []
   },
   value: '',
   filteredPosts: [],
@@ -24,6 +25,16 @@ const initialState = {
 
 export default function postReducer(state = initialState, action) {
   switch(action.type) {
+
+    case POST_COMMENT:
+      console.log('<POSTING>COMMENT</POSTING>');
+      return {
+        ...state,
+        selectedPost: {
+          comments: [...state.selectedPost.comments, action.payload]
+        }
+      }
+
     case SIGNUP:
       // Mark the state as "loading" so we can show a spinner or something
       // Also, reset any errors. We're starting fresh.
